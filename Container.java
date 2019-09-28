@@ -26,4 +26,24 @@ public class Container {
         return maxArea;
     }
 	
+	public int maxArea2(int[] height) {
+		
+		if(height.length<2) return 0;
+		if(height.length==2) return height[0]>height[1] ? height[1]:height[0];
+		
+		int left = 0, right = height.length-1;
+		int maxArea = 0;
+		while (left < right) {
+			int area = (height[left]>height[right] ? height[right]:height[left]) * (right-left);
+			maxArea = maxArea>area ? maxArea:area;
+			
+			if(height[left] > height[right])
+				right ++;
+			else
+				left ++;
+		}
+		
+		return maxArea;
+	}
+	
 }
